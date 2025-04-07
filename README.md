@@ -1,10 +1,11 @@
 # Random MCP server
 
-returns Random number between min, max param. 
-- include min number, and max number. [min, max]
+returns Random number. 
+- range 0-99
 - run with Node.js 23.6 or later
 
-指定された範囲の乱数（整数を返す）MCP Server
+乱数（整数を返す）MCP Server
+- 0-99の範囲
 - Node.js 23.6 以降で動作
 
 
@@ -16,10 +17,11 @@ generate random nubmer (integer)
 
 #### argument
 
+none
 
 #### returns
 
-
+value: string
 
 
 # how to build

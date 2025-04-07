@@ -51,16 +51,16 @@ const server = new Server(
 
 // --- Register Request Handlers ---
 
-// Handler for ListResources requests
-server.setRequestHandler(ListResourcesRequestSchema, () => {
-  console.error("[uuid-server] Received ListResources request.");
-  // Return an empty list as this server provides no resources
-  return { resources: [] };
-});
+// // Handler for ListResources requests
+// server.setRequestHandler(ListResourcesRequestSchema, () => {
+//   console.error("[random-server] Received ListResources request.");
+//   // Return an empty list as this server provides no resources
+//   return { resources: [] };
+// });
 
 // Handler for ListTools requests
 server.setRequestHandler(ListToolsRequestSchema, () => {
-  console.error("[uuid-server] Received ListTools request.");
+  console.error("[random-server] Received ListTools request.");
   // Return the list of tools this server provides
   return { tools: TOOLS };
 });
