@@ -16,8 +16,8 @@
   },
 
   "scripts": {
-    "start": "node random_server.ts",
-    "dev": "npx tsx random_server.ts",
+    "start": "node src/random_server.ts",
+    "dev": "npx tsx src/random_server.ts",
     "build": "npx tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   }
