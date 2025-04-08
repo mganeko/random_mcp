@@ -1,9 +1,24 @@
 {
+  "name": "random-mcp",
+  "version": "0.1.0",
+  "description": "return random number(integer) between 0 and 100",
+  
+  "keywords": ["mcp"],
+  "author": "mganeko",
+  "license": "MIT",
+
   "type": "module",
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.8.0"
   },
   "devDependencies": {
     "@types/node": "^22.14.0"
+  },
+
+  "scripts": {
+    "start": "node random_server.ts",
+    "dev": "npx tsx random_server.ts",
+    "build": "npx tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
   }
 }
