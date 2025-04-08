@@ -2,19 +2,19 @@
   "name": "random-mcp",
   "version": "0.1.0",
   "description": "return random number(integer) between 0 and 100",
-  
-  "keywords": ["mcp"],
+  "keywords": [
+    "mcp"
+  ],
   "author": "mganeko",
   "license": "MIT",
-
   "type": "module",
   "dependencies": {
-    "@modelcontextprotocol/sdk": "^1.8.0"
+    "@modelcontextprotocol/sdk": "^1.8.0",
+    "typescript": "^5.8.3"
   },
   "devDependencies": {
     "@types/node": "^22.14.0"
   },
-
   "scripts": {
     "start": "node dist/random_server.js",
     "dev": "npx tsx src/random_server.ts",
