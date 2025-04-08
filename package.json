@@ -19,6 +19,7 @@
     "start": "node dist/random_server.js",
     "dev": "npx tsx src/random_server.ts",
     "asts": "node src/random_server.ts",
+    "client": "node dist/client.js",
     "build": "npx tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   }
