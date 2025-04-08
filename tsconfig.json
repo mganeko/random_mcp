@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "target": "esnext",                // Target ECMAScript version
+    "module": "nodenext",           // Module code generation
+    "rootDir": "src",               // Root directory of input files
+    "outDir": "dist",               // Directory for output files
+    "strict": true,                 // Enable all strict type-checking options
+    "esModuleInterop": true,        // Enables emit interoperability between CommonJS and ES Modules
+    "skipLibCheck": true,           // Skip type checking of declaration files
+    "forceConsistentCasingInFileNames": true // Disallow inconsistently-cased references to the same file
+  },
+  "include": [
+    "src/**/*.ts"                      // Include all TypeScript files in the src directory
+  ]
+}
