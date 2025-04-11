@@ -39,7 +39,7 @@ const GET_RANDOM_NUMBER_WITH_RANGE_TOOL: Tool = {
     properties: {
       min: { type: "integer", description: "Minimum value" },
       max: { type: "integer", description: "Maximum value" },
-    }, // No input arguments needed
+    }, // min/max arguments needed
     required: ["min", "max"],
   },
   // Optional: Define expected output structure
@@ -52,7 +52,25 @@ const GET_RANDOM_NUMBER_WITH_RANGE_TOOL: Tool = {
   }
 };
 
-const TOOLS: Tool[] = [GET_RANDOM_NUMBER_TOOL, GET_RANDOM_NUMBER_WITH_RANGE_TOOL];
+const ROLL_DICE_TOOL: Tool = {
+  name: "get_rolled_dice_number",
+  description: "roll a dice and get a random number from 1 to 6",
+  inputSchema: {
+    type: "object",
+    properties: {}, // No input arguments needed
+    required: [],
+  },
+  // Optional: Define expected output structure
+  outputSchema: {
+      type: "object",
+      properties: {
+          value: { type: "string", description: "random integer number as string" }
+      },
+      required: ["value"]
+  }
+};
+
+const TOOLS: Tool[] = [GET_RANDOM_NUMBER_TOOL, GET_RANDOM_NUMBER_WITH_RANGE_TOOL, ROLL_DICE_TOOL];
 
 // Create the MCP server
 const server = new Server(
@@ -152,6 +170,33 @@ server.setRequestHandler(CallToolRequestSchema, (request: CallToolRequest) => {
           };
         }
       }
+
+      case "get_rolled_dice_number": {
+        try {
+          // Generate random number between 1 and 6 (simulating a dice roll)
+          const randomNumber = Math.floor(Math.random() * 6) + 1;
+          console.error(`[random-server] Generated random number (dice roll): ${randomNumber}`);
+          // Return the successful result payload.
+          // The SDK will wrap this in the standard MCP response structure.
+          // The structure should align with the conceptual output of the tool.
+          // Return the successful result payload within the 'content' array.
+          // The SDK expects the content to be structured according to the MCP spec.
+          return {
+            content: [{ type: "text", text: randomNumber.toString() }] // Return random number as plain text in content
+          };
+        } catch (error) {
+          const errorMessage = error instanceof Error ? error.message : String(error);
+          console.error(`[random-server] Error generating random number of dice: ${errorMessage}`);
+          // Return an error structure. The SDK should format this correctly.
+          // Based on the provided example, returning an object with isError: true
+          // and a content array seems to be the pattern for signaling errors.
+          return {
+            content: [{ type: "text", text: `Failed to generate random number of dice: ${errorMessage}` }],
+            isError: true,
+          };
+        }
+      }
+
       default: {
         // Handle requests for unknown tools
         console.error(`[random-server] Unknown tool requested: ${toolName}`);
